@@ -1,19 +1,9 @@
-interface propTypes {
-  location: {
-    state: {
-      menu: {
-        name: string,
-        price: string
-      }
-    }
-  }
-}
+import Menu from '../hooks/RouterPropFromHooks';
 
-export default function RouterPropTestResult(props: propTypes) {
-  console.log(props)
+export default function RouterPropTestResult() {
   return(
     <>
       <h1>Router Prop Test Result</h1>
-      <p>Success</p>
+      <Menu/>
     </>)
 }
