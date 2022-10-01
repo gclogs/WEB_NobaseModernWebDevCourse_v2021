@@ -3,6 +3,7 @@ import { useState } from 'react';
 type MenuType = {
   length?: number;
   menus: {
+    /* 인덱스 시그니처 사용 [key: type] */
     [key: string]: {
       name: string;
       price: number;
