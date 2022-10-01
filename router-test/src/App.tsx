@@ -15,14 +15,7 @@ function App() {
           <Route path="/" element={<Home/>} />
           <Route path="/about" element={<About/>} />
           <Route path="/routerproptest" element={<RouterPropTest/>} />
-          <Route path="/routerproptestresult" element={<RouterPropTestResult location={{
-            state: {
-              menu: {
-                name: '1',
-                price: '1'
-              }
-            }
-          }}/>} />
+          <Route path="/routerproptestresult" element={<RouterPropTestResult/>} />
         </Routes>
       </Router>
       </>
