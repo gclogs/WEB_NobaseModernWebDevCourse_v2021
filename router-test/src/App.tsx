@@ -2,6 +2,8 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 
 import Home from './routes/Home'
 import About from './routes/About'
+import RouterPropTest from './routes/RouterPropTest'
+import RouterPropTestResult from './routes/RouterPropTestResult'
 import Nav from './components/Nav'
 
 function App() {
@@ -12,6 +14,15 @@ function App() {
         <Routes>
           <Route path="/" element={<Home/>} />
           <Route path="/about" element={<About/>} />
+          <Route path="/routerproptest" element={<RouterPropTest/>} />
+          <Route path="/routerproptestresult" element={<RouterPropTestResult location={{
+            state: {
+              menu: {
+                name: '1',
+                price: '1'
+              }
+            }
+          }}/>} />
         </Routes>
       </Router>
       </>
