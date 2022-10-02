@@ -16,6 +16,8 @@
 
 ## 2. [[React] React-router-dom V6 업데이트 관련 유의사항](https://velog.io/@gyrbs22/React-React-router-dom-V6-%EC%97%85%EB%8D%B0%EC%9D%B4%ED%8A%B8-%EA%B4%80%EB%A0%A8-%EC%9C%A0%EC%9D%98%EC%82%AC%ED%95%AD)
 
+## 3. [[React] console.log가 두번 실행된다고?](https://velog.io/@hyes-y-tag/React-useEffect%EA%B0%80-%EB%91%90%EB%B2%88-%EC%8B%A4%ED%96%89%EB%90%9C%EB%8B%A4%EA%B3%A0)
+
 - 유의한게 있는데 `<Link>` 에서는 이제 prop 전달을 하지 않는답니다.
 
 - hooks를 통해 별개의 저장소를 이용해 전달을 해야한다고... 씨발;
