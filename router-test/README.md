@@ -1,6 +1,4 @@
-# 「ver.2021 노베이스 모던 웹개발 코스」 React TypeScript + GraphQL 실전개발
-
-# 노베로 시작하기!
+# Chapter 1. 노베로 시작하기!
 ## React __Fragments__
 
 1. [[공식 문서] Fragments - React](https://ko.reactjs.org/docs/fragments.html)
