@@ -1,0 +1,26 @@
+.loginMain {
+  grid-template-rows: 2fr 1fr 50px;
+}
+
+.idAndPwd,
+.wannaJoin {
+  margin: 10px 20px 10px 20px;
+}
+
+.idAndPwd {
+  padding-top: 100px;
+  display: grid;
+  grid-template-rows: 70px 70px 40px;
+}
+
+.btn-login {
+  color: white;
+  border-radius: 10px;
+}
+
+.wannaJoin {
+  display: grid;
+  grid-template-columns: 4fr 1fr;
+  font-size: 0.5rem;
+  font-weight: bold;
+}
