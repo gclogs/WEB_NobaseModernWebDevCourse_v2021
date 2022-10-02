@@ -20,6 +20,11 @@
 
 - hooks를 통해 별개의 저장소를 이용해 전달을 해야한다고... 씨발;
 
+## 4. [[React] Link를 통해 State 전달하기 ( Router v6 )](https://velog.io/@cheal3/React-Link%EB%A5%BC-%ED%86%B5%ED%95%B4-State-%EC%A0%84%EB%8B%AC%ED%95%98%EA%B8%B0-Router-v6)
+
+- Hooks중 `useLocation()` 메소드가 있는데 이걸 사용해야 데이터를 볼 수 있습니다.
+
+- `<Link to="path" state={{ data }}>` state 프로퍼티로 데이터를 보내고, 데이터를 받은 자식 컴포넌트에서 `useLocation()` 메소드를 사용하면 됩니다.
 
 # 참고자료
 ## React Hook
