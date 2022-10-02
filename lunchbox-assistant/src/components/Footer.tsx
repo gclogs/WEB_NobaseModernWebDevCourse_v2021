@@ -1,8 +1,12 @@
+import './Footer.css'
 
 export default function Footer() {
   return (
     <>
-      <h1>Footer</h1>
+      <div className="footerContainer">
+        <div>(주) 조교도시락</div>
+        <div>All rights reserved</div>
+      </div>
     </>
   )
 }
