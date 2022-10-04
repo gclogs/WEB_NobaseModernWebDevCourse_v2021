@@ -33,8 +33,6 @@ const server = new ApolloServer({ typeDefs, resolvers });
 
 const url = 4000;
 
-// server를 감시하고 있다가, 실행되면 콘솔창에 알림메시지를 보내줌
-
 server.listen().then(() => {
   console.log(`🚀  Server ready at http://localhost:${url}`);
 });
