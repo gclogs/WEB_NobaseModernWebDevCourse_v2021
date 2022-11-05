@@ -1,12 +1,38 @@
-import Koa from 'koa';
-import Router from 'koa-router';
-import api from './routes/api'
+import express from 'express';
+import AdminBro from 'admin-bro'
+import AdminBroExpress from '@admin-bro/express'
+import mongoDB from './config/mongoose';
 
-const app = new Koa();
-const router = new Router();
+const app = express()
+const db = new mongoDB();
+const adminBro = new AdminBro({
+  databases: []
+})
 
-router.use('/api', api.routes())
+const router = AdminBroExpress.buildRouter(adminBro)
+
+db.conn();
+
+app.use(adminBro.options.rootPath, router)
+app.use(express.urlencoded());
+app.use(express.json());
+
+
+app.get('/', (req, res) => {
+  res.json({
+    success: true
+  })
+})
+
 
 app.listen(4000, () => {
-  console.log(`Listening to port 4000`)
+  console.log(`
+    ################################################
+    🛡️  Server listening on port: 4000 🛡️
+    ################################################
+  `)
+})
+.on("error", (err) => {
+  console.error(err);
+  process.exit(1);
 })
