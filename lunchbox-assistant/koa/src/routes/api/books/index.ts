@@ -1,10 +1,11 @@
 import Router from 'koa-router';
+import BookCtrl from './books.ctrl'
 
 const books = new Router();
 
-books.get('/books', async ctx => {
-  ctx.body = 'GET ' + ctx.request.path;
-  console.log('test')
-})
+books.get('/', BookCtrl.list);
+books.get('/:id', BookCtrl.get);
+books.delete('/:id', BookCtrl.remove);
+books.post('/', BookCtrl.create);
 
 export default books;
