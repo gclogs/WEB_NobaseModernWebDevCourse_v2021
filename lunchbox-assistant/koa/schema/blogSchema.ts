@@ -1,4 +1,4 @@
-import { Schema } from 'mongoose';
+import { Schema, model } from 'mongoose';
 
 const blogSchema = new Schema({
   title: {
@@ -24,3 +24,5 @@ const blogSchema = new Schema({
     favs: Number
   }
 })
+
+export default model('Blog', blogSchema);
