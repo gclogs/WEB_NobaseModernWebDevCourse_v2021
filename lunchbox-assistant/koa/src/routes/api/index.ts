@@ -1,9 +1,10 @@
 import Router from 'koa-router';
+import books from './books'
+import blogs from './blogs';
 
 const api = new Router();
-api.get('/books', async ctx => {
-  ctx.body = 'GET ' + ctx.request.path;
-})
 
+api.use('/books', books.routes());
+api.use('/blogs', blogs.routes());
 
 export default api;
