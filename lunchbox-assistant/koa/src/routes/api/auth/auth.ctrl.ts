@@ -16,31 +16,27 @@ const AuthCtrl = {
       return;
     }
 
-  let exist = null;
-  try {
-    exist = await Account;
-    exist.findByEmailOrUsername(ctx.request.body);
-    console.log(exist);
-  } catch (e) {
-    ctx.thorw(500, e);
-  }
-
-  if (exist) {
-    ctx.status = 409;
-    ctx.body = {
-      key: exist.email === ctx.request.body.email ? 'email' : 'username'
+    let exist = null; // 아이디 & 이메일 중복 체크
+    try {
+      exist = await Account.findByEmailOrUsername(ctx.request.body);
+    } catch (e) {
+      ctx.throw(500, e);
     }
-    return;
-  }
+
+    if (exist) {
+      ctx.status = 409;
+      ctx.body = {
+        key: exist.email === ctx.request.body.email ? 'email' : 'username'
+      }
+      return;
+    }
     
-  let account = null;
-  try {
-    account = await Account;
-    account.localRegister(ctx.request.body);
-    console.log(result)
-  } catch(e) {
-    ctx.throw(500, e);
-  }
+    let account = null;
+    try {
+      account = await Account.localRegister(ctx.request.body);
+    } catch(e) {
+      ctx.throw(500, e);
+    }
 
     ctx.body = account.profile;
   },
@@ -62,9 +58,7 @@ const AuthCtrl = {
 
     let account = null;
     try {
-      account = await Account;
-      account.findByEmail(email);
-      console.log(account);
+      account = await Account.findByEmail(email);
     } catch (e) {
       ctx.throw(500, e)
     }
@@ -80,12 +74,9 @@ const AuthCtrl = {
   async exists(ctx) {
     const { key, value } = ctx.params;
     let account = null;
-    let result = null;
 
     try {
-      account = await Account;
-      result = (key === 'email'?account.findByEmail(value):account.findByUsername(value))
-      console.log(result);
+      account = await (key === 'email'?Account.findByEmail(value):Account.findByUsername(value));
     } catch (e) {
       ctx.throw(500, e);
     }
