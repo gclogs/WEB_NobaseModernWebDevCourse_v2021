@@ -1,17 +1,44 @@
-import { model, Schema } from 'mongoose';
+import mongoose, { Model, Schema } from 'mongoose';
 import crypto from 'crypto';
 import dotenv from 'dotenv';
 
 dotenv.config({ path: '.env' })
 
+interface IAccount {
+  profile: {
+    username: string,
+    thumnail: string
+  },
+  email: string,
+  social?: {
+    facebook: {id:string, token: string},
+    google: {id:string, token: string}
+  }
+  password: string,
+  thoughtCount: number,
+  createdAt: Date
+}
+
+interface IAccountDocument extends IAccount, Document {
+  validatePassword: (password: string) => Promise<boolean>;
+}
+
+interface IAccountModel extends Model<IAccountDocument> {
+  findByEmailOrUsername({username, email}): Promise<IAccountDocument>;
+  findByUsername: (username: string) => Promise<IAccountDocument>;
+  findByEmail: (email: string) => Promise<IAccountDocument>;
+  localRegister: ({username, email, password}) => Promise<IAccountDocument>;
+}
+
 const hash = (password) => crypto.createHmac('sha256', 'root$1$2$3').update(password).digest('hex');
 
-const Account = new Schema({
+const Account = new Schema<IAccountDocument>({
   profile: {
     username: String,
     thumnail: {
       type: String,
       default: 'static/images/default_thumnail.png'
+      },
     },
     email: { type: String },
     social: { // 소셜 계정으로 회원가입시 각 서비스에서 제공되는 id 및 token을 저장
@@ -33,7 +60,6 @@ const Account = new Schema({
       type: Date,
       default: Date.now
     }
-  }
 })
 
 Account.statics.findByUsername = function(username) {
@@ -60,9 +86,9 @@ Account.statics.localRegister = function({ username, email, password }) {
     },
     email,
     password: hash(password)
-  })
+  }).save()
 
-  return account.save()
+  return account;
 }
 
 Account.methods.validatePassword = function(password) {
@@ -70,4 +96,5 @@ Account.methods.validatePassword = function(password) {
   return this.password === hashed;
 }
 
-export default model('Account', Account);
+const Auth = mongoose.model<IAccountDocument, IAccountModel>('auth', Account);
+export default Auth;
