@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "crypto": "^1.0.1",
     "joi": "^17.7.0",
     "koa": "^2.13.4",
     "koa-bodyparser": "^4.3.0",
