@@ -1,5 +1,5 @@
 import Joi from 'joi';
-import Account from '../../../../schema/accountSchema';
+import Account from '../../../schema/accountSchema';
 
 const AuthCtrl = {
   async localRegister(ctx) {

@@ -1,4 +1,4 @@
-import Blog from '../../../../schema/blogSchema'
+import Blog from '../../../schema/blogSchema'
 
 const BlogCtrl = {
   async create(ctx) {
