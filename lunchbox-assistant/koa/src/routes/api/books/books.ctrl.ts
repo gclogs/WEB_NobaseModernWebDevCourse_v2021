@@ -1,4 +1,4 @@
-import Book from '../../../../schema/bookSchema';
+import Book from '../../../schema/bookSchema';
 
 const BookCtrl = {
   async create(ctx) {
