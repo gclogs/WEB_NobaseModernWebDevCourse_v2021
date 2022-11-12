@@ -1,6 +1,7 @@
 import mongoose, { Model, Schema } from 'mongoose';
 import crypto from 'crypto';
 import dotenv from 'dotenv';
+import Token from '../lib/token';
 
 dotenv.config({ path: '.env' })
 
@@ -31,6 +32,7 @@ interface IAccountModel extends Model<IAccountDocument> {
   localRegister: ({username, email, password}) => Promise<IAccountDocument>;
 }
 
+const token = new Token();
 const { HASH_KEY } = process.env;
 const hash = (password) => crypto.createHmac('sha256', HASH_KEY).update(password).digest('hex');
 
@@ -104,7 +106,7 @@ Account.methods.generateToken = function() {
     profile: this.profile
   }
   
-  return generateToken(payload, 'account');
+  return token.generateToken(payload, 'account');
 }
 
 const Auth = mongoose.model<IAccountDocument, IAccountModel>('auth', Account);
