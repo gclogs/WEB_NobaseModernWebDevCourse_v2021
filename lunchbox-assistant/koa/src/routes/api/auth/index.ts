@@ -7,5 +7,6 @@ auth.post('/register/local', AuthCtrl.localRegister);
 auth.post('/login/local', AuthCtrl.localLogin);
 auth.get('/exists/:key(email|username)/:value', AuthCtrl.exists);
 auth.post('/logout', AuthCtrl.logout)
+auth.get('/check', AuthCtrl.checkUser)
 
 export default auth;
