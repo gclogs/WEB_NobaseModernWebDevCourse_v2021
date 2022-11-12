@@ -4,12 +4,12 @@ import dotenv from 'dotenv';
 dotenv.config({ path: '.env' })
 const { SECRET_JWT } = process.env;
 
-function generateToken(payload) {
+function generateToken(...payload) {
   return new Promise(
     (resolve, reject) => {
       jwt.sign(
         payload,
-        jwtSecret,
+        SECRET_JWT,
         {
           expiresIn: '7d'
         }, (error, token) => {
