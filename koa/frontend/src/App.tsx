@@ -1,15 +1,22 @@
 import React from 'react';
-import { Route } from 'react-router-dom'
-import Home from '../pages/HomePage'
-import Auth from '../pages/AuthPage'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import Home from './pages/HomePage'
+import Auth from './pages/AuthPage'
+import { Provider } from 'react-redux';
 
-interface AppProps {}
-
-const App: React.FC<AppProps> = () => {
+const App = ({store}) => {
   return (
     <>
-      <Route path="/" element={Home}/>
-      <Route path="/auth" element={Auth}/>
+      <Provider store={store}>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Home />}/>
+            <Route path="/auth" element={<Auth />}/>
+          </Routes>
+        </BrowserRouter>
+      </Provider>
     </>
   )
 }
+
+export default App;
