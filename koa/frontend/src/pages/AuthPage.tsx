@@ -1,9 +1,13 @@
 import React from 'react';
+import AuthForm from '../components/auth/AuthForm';
+import { Outlet } from 'react-router-dom';
 
 const AuthPage = () => {
   return (
     <>
-      Auth 이고... 왜 나한테만 그러는 걸까
+      <AuthForm>
+        <Outlet />
+      </AuthForm>
     </>
   )
 }
